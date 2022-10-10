@@ -19,9 +19,9 @@ CREATE TABLE questions (
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO questions SET big_question_id=1, image='takanawa.png';
-INSERT INTO questions SET big_question_id=1, image='kameido.png';
-INSERT INTO questions SET big_question_id=2, image='mukainada.png';
+INSERT INTO questions SET big_question_id=1, image='takanawa.jpg';
+INSERT INTO questions SET big_question_id=1, image='kameido.jpg';
+INSERT INTO questions SET big_question_id=2, image='mukainada.jpg';
 
 DROP TABLE IF EXISTS choices;
 CREATE TABLE choices (
@@ -34,7 +34,7 @@ CREATE TABLE choices (
 );
 
 INSERT INTO choices
-  (question_id, name, valid); 
+  (question_id, name, valid)
 VALUES
   (1, 'たかなわ', 1),
   (1, 'たかわ', 0),

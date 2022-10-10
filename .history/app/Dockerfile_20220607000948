@@ -1,2 +1,0 @@
-FROM php:php
-RUN docker-php-ext-install pdo_mysql
