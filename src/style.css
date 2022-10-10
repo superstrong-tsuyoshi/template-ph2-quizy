@@ -1,0 +1,25 @@
+li {
+  text-align: center;
+  padding: 13px 13px 13px 13px;
+  margin: 0px 10px 0px 10px;
+  border-color: #F5F5F5;
+  border: 3px solid#F5F5F5;
+  display: block;
+  box-shadow: 0px 0px 3px #F5F5F5;
+}
+h2::after {
+  content: "";
+  display: block;
+  margin-top: 10px;
+  width: 18%;
+  height: 2px;
+  background-color: #00ab36;
+  position: relative;
+}
+.container{
+  width: 650px;
+  margin: 0 auto;
+}
+
+
+

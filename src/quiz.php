@@ -27,6 +27,8 @@
     $question_stmt->bindValue(':id', $id);
     $question_stmt->execute();
     $question_results =  $question_stmt->fetchAll();
+
+
   ?>
 
 <!DOCTYPE html>
@@ -35,16 +37,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
   <title>Document</title>
 </head>
 <body>
-  <h1><?php echo$test['name']?></h1>
-<!-- // {（波カッコ）の代わりに、：（コロン）を使う -->
-<?php foreach ($question_results as $question_result) : ?>
-
-<img src="./img/<?php echo $question_result['image']; ?>"></img>
-
-<!-- // 最後は endforeach と；（セミコロン）で閉じる -->
-<?php endforeach; ?>
+  <div class="container">
+    <h1><?php echo$test['name']?></h1>
+  <!-- // {（波カッコ）の代わりに、：（コロン）を使う -->
+    
+    <?php foreach ($question_results as $question_result) : ?>
+      <h2><?php echo $question_result['id']?>、この地名なんて読む？</h2>
+      <img src="./img/<?php echo $question_result['image']; ?>"></img>
+      <ul>
+      <?php 
+      $choice_stmt = $pdo->prepare('SELECT * FROM choices WHERE question_id = :id');
+      $choice_stmt->bindValue(':id', $question_result['id']);
+      $choice_stmt->execute();
+      $choice_results =  $choice_stmt->fetchAll();
+      ?>
+          <?php foreach ($choice_results as $choice_result) : ?>
+        <li><?= $choice_result['name']?></li>
+        <?php endforeach; ?>
+      </ul>
+  
+  <!-- // 最後は endforeach と；（セミコロン）で閉じる -->
+  <?php endforeach; ?>
+  </div>
 </body>
 </html>
