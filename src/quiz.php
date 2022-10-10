@@ -18,18 +18,15 @@
   }
     $id = $_GET['id'];
     // <!-- $idという変数にgetした値を返す -->
-    $stmt = $pdo->prepare('SELECT * FROM big_questions WHERE id = ?');
-    // 「:id」に対して値「1」をセット
-    $stmt->bindValue(1, $id);
+    $stmt = $pdo->prepare('SELECT * FROM big_questions WHERE id = :id');
+    $stmt->bindValue(':id', $id);
     $stmt->execute();
     $test =  $stmt->fetch();
 
-    $question_stmt = $pdo->prepare('SELECT * FROM questions WHERE big_question_id = ?');
-    // 「:id」に対して値「1」をセット
-    $question_stmt->bindValue(1, $id);
+    $question_stmt = $pdo->prepare('SELECT * FROM questions WHERE big_question_id = :id');
+    $question_stmt->bindValue(':id', $id);
     $question_stmt->execute();
     $question_results =  $question_stmt->fetchAll();
-    // echo$question_results[1]['image'];
   ?>
 
 <!DOCTYPE html>
